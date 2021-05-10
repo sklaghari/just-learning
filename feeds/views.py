@@ -4,11 +4,13 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from notifications.models import Notification
 from .models import Notification1
-from .models import Task,Supervisor
+from .models import Task,Supervisor,Employee
 from actstream import action
 from actstream.actions import follow,unfollow
 from actstream.models import user_stream,actor_stream
 from notifications.signals import notify
+from .serializers import EmployeeSerilizer
+from rest_framework.views import APIView
 
 # Create your views here.
 def feeds(request):
@@ -43,6 +45,7 @@ def notifications(request):
         'notifications': qs.mark_all_as_active()
     }
     return render(request, 'feeds/notification.html', context)
-
+def employee_view(request):
+    pass
 
 

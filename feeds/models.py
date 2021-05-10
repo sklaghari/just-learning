@@ -25,3 +25,10 @@ class Supervisor(models.Model):
     notifications = GenericRelation(Notification1)
     def __str__(self):
         return f'{self.user.username}'
+class Employee(models.Model):
+    employee_number = models.IntegerField()
+    employee_name = models.CharField(max_length=30)
+    employee_salary =  models.FloatField()
+    def __str__(self):
+        return self.employee_name
+

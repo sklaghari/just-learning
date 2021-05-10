@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'actstream',
     'debug_toolbar',
     'notifications',
+    'rest_framework',
 ]
 ACTSTREAM_SETTINGS = {
     'MANAGER': 'feeds.managers.MyActionManager',
@@ -51,6 +52,13 @@ ACTSTREAM_SETTINGS = {
     'USE_PREFETCH': True,
     'USE_JSONFIELD': False,
     'GFK_FETCH_DEPTH': 1,
+}
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }
 DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True}
 MIDDLEWARE = [
