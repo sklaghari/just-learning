@@ -13,6 +13,7 @@ from .serializers import EmployeeSerilizer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics, status
+from rest_framework.viewsets import ModelViewSet
 
 
 # Create your views here.
@@ -48,10 +49,7 @@ def notifications(request):
         'notifications': qs.mark_all_as_active()
     }
     return render(request, 'feeds/notification.html', context)
-class employeeListCreateView(generics.ListCreateAPIView):
-    queryset = Employee.objects.all()
-    serializer_class= EmployeeSerilizer
-class employeeRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class employeeModelViewSet(ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class= EmployeeSerilizer
 

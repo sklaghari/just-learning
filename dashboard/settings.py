@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'notifications',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 ACTSTREAM_SETTINGS = {
     'MANAGER': 'feeds.managers.MyActionManager',
