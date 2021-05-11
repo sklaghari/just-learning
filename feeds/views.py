@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from notifications.models import Notification
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly, IsAuthenticated
 
 from .models import Notification1
 from .models import Task,Supervisor,Employee
@@ -55,6 +56,7 @@ def notifications(request):
 class employeeModelViewSet(ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class= EmployeeSerilizer
+    permission_classes = [IsAuthenticated,]
 
 
 
