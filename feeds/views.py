@@ -3,6 +3,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
 from django.shortcuts import render
 from notifications.models import Notification
+from rest_framework.authtoken.models import Token
+
 from .models import Notification1
 from .models import Task,Supervisor,Employee
 from actstream import action
@@ -15,8 +17,9 @@ from rest_framework.response import Response
 from rest_framework import generics, status
 from rest_framework.viewsets import ModelViewSet
 
-
-# Create your views here.
+all_users = User.objects.select_related('auth_token').all()
+for user in all_users:
+    Token.objects.get_or_create(user =user)
 def feeds(request):
     userStream = user_stream(request.user, with_user_activity=True)
     context = {
