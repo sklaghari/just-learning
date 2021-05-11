@@ -1,5 +1,6 @@
 from rest_framework import serializers
-class EmployeeSerilizer(serializers.Serializer):
-    employee_number = serializers.IntegerField()
-    employee_name = serializers.CharField(max_length=30)
-    employee_salary = serializers.FloatField()
+from .models import Employee
+class EmployeeSerilizer(serializers.ModelSerializer):
+    class Meta:
+        model = Employee
+        fields = '__all__'

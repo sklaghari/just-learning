@@ -11,6 +11,9 @@ from actstream.models import user_stream,actor_stream
 from notifications.signals import notify
 from .serializers import EmployeeSerilizer
 from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import generics, status
+
 
 # Create your views here.
 def feeds(request):
@@ -45,7 +48,9 @@ def notifications(request):
         'notifications': qs.mark_all_as_active()
     }
     return render(request, 'feeds/notification.html', context)
-def employee_view(request):
-    pass
+class employee_view(generics.CreateAPIView):
+    queryset = Employee.objects.all()
+    serializer_class= EmployeeSerilizer
+
 
 
