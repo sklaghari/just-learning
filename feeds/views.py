@@ -48,7 +48,10 @@ def notifications(request):
         'notifications': qs.mark_all_as_active()
     }
     return render(request, 'feeds/notification.html', context)
-class employee_view(generics.CreateAPIView):
+class employeeListCreateView(generics.ListCreateAPIView):
+    queryset = Employee.objects.all()
+    serializer_class= EmployeeSerilizer
+class employeeRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()
     serializer_class= EmployeeSerilizer
 
